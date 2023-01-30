@@ -57,7 +57,7 @@
 
 Complexity is anything related to the structure of a software system that makes it hard to understand and modify the system.
 
-![complexity.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1675016322058/b4562f0e-6b9c-4dca-8e4b-54ea25d7c54f.png)
+![complexity.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1675016322058/b4562f0e-6b9c-4dca-8e4b-54ea25d7c54f.png align="left")
 
 * Change amplification: a seemingly simple change requires code modifications in many places.
     
@@ -119,45 +119,39 @@ Tactical programming 是短视的，忽视设计使得系统的复杂性陡增�
 
 > The best modules are those that provide powerful functionality yet have simple interfaces.
 
-![Modules-Should-Be-Deep.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1675083728308/1a211913-4044-41eb-bdf5-4fc68170aac7.png)
+![Modules-Should-Be-Deep.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1675083728308/1a211913-4044-41eb-bdf5-4fc68170aac7.png align="left")
 
 在上图中，矩形的面积与模块的功能成正比。矩形的顶部表示模块的接口，其长度与模块的复杂性成正比。当为系统实现同样多的功能时，deep module 与 shallow module 给系统的复杂性造成的影响不同。
 
 > For the purposes of this book, a module is any unit of code that has an interface and an implementation.
 
-deep module 的例子
+**Deep modules examples: Unix I/O interface**
 
-* Unix I/O interface
-    
-    ```c
-    int open(const char* path, int flags, mode_t permissions);
-    ssize_t read(int fd, void* buffer, size_t count);
-    ssize_t write(int fd, const void* buffer, size_t count);
-    off_t lseek(int fd, off_t offset, int referencePosition);
-    int close(int fd);
-    ```
-    
-* Java 和 Go 的垃圾回收器甚至不需要接口
-    
+```c
+int open(const char* path, int flags, mode_t permissions);
+ssize_t read(int fd, void* buffer, size_t count);
+ssize_t write(int fd, const void* buffer, size_t count);
+off_t lseek(int fd, off_t offset, int referencePosition);
+int close(int fd);
+```
 
-shallow module 的例子
+**Deep modules examples:** Java 和 Go 的垃圾回收器甚至不需要接口
 
-* Java 社区有 *classes should be small* 的文化，作者将这种现象称为 *Classitis* 。下面是用 Java 读取文件中的序列化后的对象的例子。为了创建 `objectStream` 对象，不得不手动创建 `fileStream`, `bufferedStream`.
-    
-    ```java
-    FileInputStream fileStream = new FileInputStream(fileName);
-    BufferedInputStream bufferedStream = new BufferedInputStream(fileStream);
-    ObjectInputStream objectStream = new ObjectInputStream(bufferedStream);
-    ```
-    
-* CS 190 中的 project 代码。该模块的实现完全被接口暴露出来了，接口没有起到抽象的作用，反而增加了认知负担。
-    
-    ```java
-    private void addNullValueForAttribute(String attribute) {
-        data.put(attribute, null);
-    }
-    ```
-    
+**shallow modules** **examples:** Java 社区有 *classes should be small* 的文化，作者将这种现象称为 *Classitis* 。下面是用 Java 读取文件中的序列化后的对象的例子。为了创建 `objectStream` 对象，不得不手动创建 `fileStream`, `bufferedStream`.
+
+```java
+FileInputStream fileStream = new FileInputStream(fileName);
+BufferedInputStream bufferedStream = new BufferedInputStream(fileStream);
+ObjectInputStream objectStream = new ObjectInputStream(bufferedStream);
+```
+
+**shallow modules examples: CS 190 中的 project 代码**。该模块的实现完全被接口暴露出来了，接口没有起到抽象的作用，反而增加了认知负担。
+
+```java
+private void addNullValueForAttribute(String attribute) {
+    data.put(attribute, null);
+}
+```
 
 ## 一些有意思的观点
 
