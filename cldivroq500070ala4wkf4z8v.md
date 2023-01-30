@@ -77,7 +77,7 @@ Complexity is anything related to the structure of a software system that makes 
 * **Strategic programming**: 相比起完成当前的任务，更重视设计。
     
 
-Tactical programming 是短视的，忽视设计使得系统的复杂性陡增，很快我们就会注意到复杂性带来的问题，这会使得我们把从设计中节省的时间加倍奉还。我们应该把 Strategic programming 视为一种投资 (investment mindset)，很多时候这个投资的回报来得比预期的更快。
+Tactical programming 是短视的，忽视设计使得系统的复杂性增长过快，很快我们就会注意到复杂性带来的问题，这会使得我们把从设计中节省的时间加倍奉还。我们应该把 Strategic programming 视为一种投资 (investment mindset)，很多时候这个投资的回报来得比预期的更快。
 
 ### Zero tolerance
 
